@@ -1,6 +1,7 @@
 <template>
   <div class="dashboard-container">
     <div class="dashboard-text">name: {{ name }}</div>
+    <p>{{user.username+user.id}}</p>
   </div>
 </template>
 
@@ -9,10 +10,23 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Dashboard',
+  data() {
+    return {
+      user: {}
+    }
+  },
   computed: {
     ...mapGetters([
       'name'
     ])
+  },
+  created() {
+    this.getUser()
+  },
+  methods: {
+    getUser() {
+      this.user = this.$store.getters.user
+    }
   }
 }
 </script>

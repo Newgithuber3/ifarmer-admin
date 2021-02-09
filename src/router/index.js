@@ -5,6 +5,7 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '@/layout'
+import * as path from 'path'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -130,10 +131,18 @@ export const constantRoutes = [
         name: 'Order',
         component: () => import('@/views/order/index'),
         meta: { title: '订单管理', icon: 'el-icon-s-order' }
-      },
+      }
+    ]
+  },
+
+  {
+    path: '/detail',
+    name: 'Detail',
+    hidden: true,
+    component: Layout,
+    children: [
       {
-        path: 'detail',
-        hidden: true,
+        path: 'index',
         component: () => import('@/views/order/detail'),
         meta: { title: '订单详情' }
       }

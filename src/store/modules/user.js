@@ -6,7 +6,9 @@ const getDefaultState = () => {
   return {
     token: getToken(),
     name: '',
-    avatar: ''
+    avatar: '',
+    userInfo: JSON.parse(localStorage.getItem('userInfo')) || {},
+    isLogin: localStorage.getItem('isLogin')
   }
 }
 
@@ -24,6 +26,19 @@ const mutations = {
   },
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
+  },
+  handleUser: (state, user) => {
+    state.userInfo = user
+    localStorage.setItem('userInfo', JSON.stringify(user))
+  },
+  isLogin(state, status) {
+    state.isLogin = status
+    localStorage.setItem('isLogin', status)
+  },
+  LoginOut(state) {
+    localStorage.clear()
+    state.userInfo = ''
+    state.isLogin = false
   }
 }
 

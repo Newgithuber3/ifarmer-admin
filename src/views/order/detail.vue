@@ -10,7 +10,7 @@
             }}
           </h5>
           <h5>订单编号：{{order.id}} </h5>
-          <h5>店铺名称：{{order.product.seller.storename}} </h5>
+          <h5>店铺名称：{{ order.product.seller.storename}} </h5>
         </div>
       </el-aside>
       <el-main>
@@ -74,7 +74,7 @@ export default {
   },
   created() {
     this.orderId = this.$route.query.orderId
-    console.log(this.orderId)
+    console.log('orderid:' + this.orderId)
     this.fetchData()
   },
   methods: {
@@ -87,7 +87,7 @@ export default {
     },
     getAddress: function() {
       console.log('22' + this.order)
-      var param = { 'addressID': this.order.buyeraddress }
+      const param = { addressID: this.order.buyeraddress }
       console.log(param)
       getAddress(param).then(response => {
         this.address = response.data.address

@@ -118,6 +118,8 @@ export default {
             this.loading = false
             this.loginForm = response.data.user
             console.log(response.data)
+            this.$store.commit('user/handleUser', response.data.user)
+            this.$store.commit('user/isLogin', true)
             this.$router.push({ path: '/dashboard' })
           }).catch(() => {
             this.loading = false

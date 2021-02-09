@@ -20,6 +20,6 @@ export function getAddress(params) {
   return request({
     url: '/common/getAddress',
     method: 'get',
-    param
+    params
   })
 }
