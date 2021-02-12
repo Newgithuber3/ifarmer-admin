@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <el-button type="primary" @click="addUser" style="float:right">添加用户</el-button>
+    <el-button type="primary" style="float:right" @click="addUser">添加用户</el-button>
     <p>
       <br>
     </p>
@@ -49,12 +49,14 @@
         </template>
       </el-table-column>
       <el-table-column label="操作" width="150" align="center">
-        <el-tooltip class="item" effect="dark" content="修改" placement="top">
-          <el-button type="primary" icon="el-icon-edit" />
-        </el-tooltip>
-        <el-tooltip class="item" effect="dark" content="删除" placement="top">
-          <el-button type="primary" icon="el-icon-delete" />
-        </el-tooltip>
+        <template slot-scope="scope">
+          <el-tooltip class="item" effect="dark" content="修改" placement="top">
+            <el-button type="primary" icon="el-icon-edit" @click="update(scope.row.uid)" />
+          </el-tooltip>
+          <el-tooltip class="item" effect="dark" content="删除" placement="top">
+            <el-button type="primary" icon="el-icon-delete" @click="deleteUser(scope.row.uid)" />
+          </el-tooltip>
+        </template>
       </el-table-column>
     </el-table>
     <el-pagination
@@ -72,7 +74,7 @@
 
 <script>
 
-import { getUserList } from '@/api/user'
+import { deleteUser, getUserList } from '@/api/user'
 import { formatDate } from '@/utils/date'
 
 export default {
@@ -124,6 +126,35 @@ export default {
     },
     addUser() {
       this.$router.push('/add')
+    },
+    update(id) {
+      this.$router.push({
+        path: '/user/update',
+        query: { uid: id }
+      })
+    },
+    deleteUser(id) {
+      this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+        center: true
+      }).then(() => {
+        var params = { 'uid': id }
+        deleteUser(params).then(res => {
+          if (res.success === true) {
+            this.$message({
+              type: 'success',
+              message: '删除成功!'
+            })
+          }
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        })
+      })
     }
   }
 }

@@ -16,17 +16,42 @@ export function getInfo(token) {
   })
 }
 
-export function logout() {
-  return request({
-    url: '/vue-admin-template/user/logout',
-    method: 'post'
-  })
-}
-
 export function getUserList(data) {
   return request({
     url: '/user/userList',
     method: 'post',
     data: data
+  })
+}
+
+export function addUser(data) {
+  return request({
+    url: '/user/add',
+    method: 'post',
+    data
+  })
+}
+
+export function getUser(params) {
+  return request({
+    url: '/user/queryUser',
+    method: 'get',
+    params
+  })
+}
+
+export function updateUser(data) {
+  return request({
+    url: '/user/updateUser',
+    method: 'post',
+    data
+  })
+}
+
+export function deleteUser(params) {
+  return request({
+    url: '/user/deleteUser',
+    method: 'get',
+    params
   })
 }
