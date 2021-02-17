@@ -41,6 +41,7 @@ import { parseTime } from '@/utils'
 
 export default {
   name: 'Add',
+  inject: ['reload'],
   data() {
     return {
       passwordType: 'password',
@@ -119,7 +120,7 @@ export default {
       })
     },
     resetForm(formName) {
-      this.$refs[formName].resetFields()
+      this.reload()
     },
     showPwd() {
       if (this.passwordType === 'password') {

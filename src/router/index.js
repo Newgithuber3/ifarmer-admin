@@ -124,6 +124,13 @@ export const constantRoutes = [
           title: '认证审核',
           icon: 'el-icon-finished'
         }
+      },
+      {
+        path: 'detail',
+        name: 'Detail',
+        hidden: true,
+        component: () => import('@/views/store/detail'),
+        meta: { title: '详情' }
       }
     ]
   },
