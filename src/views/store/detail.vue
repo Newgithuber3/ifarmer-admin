@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <h2 style="margin-left: 40%">店铺详情</h2>
-    <img style="width: 90%; height: 150px;margin-left: 3%" src="@/assets/images/storeBg.jpg">
+    <img style="width: 90%; height: 150px;margin-left: 3%" src="@/assets/images/storeBg.jpg" alt="header">
     <el-row :gutter="20" style="margin-left: 5%">
       <el-col :span="12">
         <el-card class="box-card">

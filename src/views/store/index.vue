@@ -26,6 +26,15 @@
         </el-col>
       </el-row>
     </div>
+    <div class="search" style="float: right; margin-right: 3%">
+      <el-input
+        v-model="searchName"
+        placeholder="输入店铺名称进行搜索"
+        prefix-icon="el-icon-search"
+        style="width: 400px"
+      />&nbsp;
+      <el-button type="primary" icon="el-icon-search" @click="search">搜索</el-button>
+    </div><p><br></p>
     <div class="table">
       <el-table
         v-loading="listLoading"
@@ -100,10 +109,11 @@
 
 <script>
 import { formatDate } from '@/utils/date'
-import { getRunningCount, getStoreList } from '@/api/seller'
+import { getRunningCount, getStoreList, searchStoreByName } from '@/api/seller'
 import multiLine from '@/components/Chart/multiLine'
 
 export default {
+  inject: ['reload'],
   components: {
     multiLine
   },
@@ -132,7 +142,8 @@ export default {
       lineData: {
         totalCount: [20, 32, 45, 70],
         runningCount: [20, 25, 35, 60]
-      }
+      },
+      searchName: null
     }
   },
   created() {
@@ -170,6 +181,16 @@ export default {
       this.$router.push({
         path: '/store/detail',
         query: { sellerID: id }
+      })
+    },
+    search() {
+      if (this.searchName === null) {
+        this.reload()
+        return
+      }
+      var param = { storeName: this.searchName }
+      searchStoreByName(param).then(res => {
+        this.list = res.data.sellers
       })
     }
   }

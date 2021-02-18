@@ -8,6 +8,14 @@ export function getStore(params) {
   })
 }
 
+export function searchStoreByName(params) {
+  return request({
+    url: '/seller/queryByName',
+    method: 'get',
+    params
+  })
+}
+
 export function getStoreList(params) {
   return request({
     url: '/seller/sellerList',

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <el-container style="margin: 50px">
-      <el-aside width="400px">
-        <div style="margin: 40px; border:1px solid #000;border-radius: 4px;width: 300px">
+    <el-row gutter="20">
+      <el-col :span="8">
+        <div style="margin-top: 40px;margin-left: 50px; border:1px solid #000;border-radius: 4px;width: 350px">
           <h4>订单信息</h4>
           <h5>收货地址：
             {{ address.username+address.telephone+
@@ -12,9 +12,9 @@
           <h5>订单编号：{{order.id}} </h5>
           <h5>店铺名称：{{ order.product.seller.storename}} </h5>
         </div>
-      </el-aside>
-      <el-main>
-        <div class="status">
+      </el-col>
+      <el-col :span="14" >
+        <div class="status" style="margin-top: 40px">
           <div class="icon" align="center">
             <i class="el-icon-shopping-cart-full" ></i>
             订单状态：{{order.status}}
@@ -24,8 +24,8 @@
           <h4>更新时间：{{order.updatetime | formatDate}}</h4>
 
         </div>
-      </el-main>
-    </el-container>
+      </el-col>
+    </el-row>
     <div style="margin: 100px">
       <el-row :gutter="15" align="center">
         <el-col :span="6">商品</el-col>
