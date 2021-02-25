@@ -207,9 +207,8 @@ export default {
 }
 
 .table {
-  margin-left: 30px;
+  margin-left: 3%;
   margin-bottom: 100px;
-  width: 1300px;
   text-align: center;
 }
 </style>
