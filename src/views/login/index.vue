@@ -161,7 +161,7 @@ $cursor: #fff;
       -webkit-appearance: none;
       border-radius: 0px;
       padding: 12px 5px 12px 15px;
-      color: $light_gray;
+      color: black;
       height: 47px;
       caret-color: $cursor;
 
@@ -189,7 +189,8 @@ $light_gray:#eee;
 .login-container {
   min-height: 100%;
   width: 100%;
-  background-color: $bg;
+  //background-color: white;
+  background: linear-gradient(to bottom,lightpink,lightblue);
   overflow: hidden;
 
   .login-form {
@@ -215,7 +216,7 @@ $light_gray:#eee;
 
   .svg-container {
     padding: 6px 5px 6px 15px;
-    color: $dark_gray;
+    color: white;
     vertical-align: middle;
     width: 30px;
     display: inline-block;
@@ -226,7 +227,7 @@ $light_gray:#eee;
 
     .title {
       font-size: 26px;
-      color: $light_gray;
+      color: black;
       margin: 0px auto 40px auto;
       text-align: center;
       font-weight: bold;
@@ -238,7 +239,7 @@ $light_gray:#eee;
     right: 10px;
     top: 7px;
     font-size: 16px;
-    color: $dark_gray;
+    color: white;
     cursor: pointer;
     user-select: none;
   }
